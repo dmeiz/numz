@@ -1,0 +1,16 @@
+---
+# This is a sample database file for the DataMapper ORM
+:development: &defaults
+  :adapter: mysql
+  :database: numz_dev
+  :username: root
+  :password: 
+  :host: localhost
+
+:test:
+  <<: *defaults
+  :database: numz_test
+
+:production:
+  <<: *defaults
+  :database: numz_prod
