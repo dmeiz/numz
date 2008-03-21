@@ -1,5 +1,5 @@
 class Num < DataMapper::Base
-  property :value, :float
+  property :value, :float, :length => 20
   property :relevant_at, :datetime
   property :relevant_to, :datetime
   property :link, :string, :length => 255

@@ -1,3 +1,7 @@
+!!!
 %html
-  %h1 Welcome!
+  %h1 Numz
+  .nav
+    %a{:href => url(:controller => "nums", :action => "new")} New
+    %a{:href => url(:controller => "nums", :action => "list")} List
   %body= catch_content :for_layout

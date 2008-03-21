@@ -1,0 +1,12 @@
+%h2 Nums
+%table
+  %tr
+    %th Value
+    %th Relevant At
+    %th Link
+  - @nums.each do |num|
+  %tr
+    %td= num.value
+    %td= num.relevant_at
+    %td= num.link
+  - end
