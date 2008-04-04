@@ -1,7 +1,10 @@
 !!!
 %html
-  %h1 Numz
-  .nav
-    %a{:href => url(:controller => "nums", :action => "new")} New
-    %a{:href => url(:controller => "nums", :action => "list")} List
-  %body= catch_content :for_layout
+  %head
+    %script{:type => "text/javascript", :src => "javascripts/prototype.js"}/
+  %body
+    %h1 Numz
+    .nav
+      %a{:href => url(:controller => "nums", :action => "new")} New
+      %a{:href => url(:controller => "nums", :action => "list")} List
+    .body= catch_content :for_layout
