@@ -1,7 +1,10 @@
 !!!
 %html
   %head
-    %script{:type => "text/javascript", :src => "javascripts/prototype.js"}/
+    = css_include_tag "calendar_date_select/default"
+    = js_include_tag "prototype"
+    = js_include_tag "calendar_date_select/calendar_date_select"
+    = include_required_js
   %body
     %h1 Numz
     .nav

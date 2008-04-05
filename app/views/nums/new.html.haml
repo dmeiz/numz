@@ -1,3 +1,4 @@
+- require_js("new.js")
 %h2 Add a Num
 - form_for(:num, :action => url(:action => "new")) do
 %table
@@ -6,7 +7,9 @@
     %td= text_control(:value)
   %tr
     %th Relevant At
-    %td= text_control(:relevant_at)
+    %td
+      = text_control(:relevant_at) 
+      = image_tag("calendar_date_select/calendar.gif", :id => "relevant_at_cal")
   %tr
     %th Link
     %td= text_control(:link)
@@ -14,3 +17,4 @@
     %td/
     %td= submit_field
 - end
+
