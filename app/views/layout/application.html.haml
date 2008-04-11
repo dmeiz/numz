@@ -7,6 +7,7 @@
     = include_required_js
   %body
     %h1 Numz
+    #notice= flash[:notice] || ""
     .nav
       %a{:href => url(:controller => "nums", :action => "new")} New
       %a{:href => url(:controller => "nums", :action => "list")} List

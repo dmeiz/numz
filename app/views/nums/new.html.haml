@@ -1,5 +1,10 @@
 - require_js("new.js")
 %h2 Add a Num
+- Merb.logger.debug("errors=#{@num.errors.full_messages.join}")
+- unless @num.errors.empty?
+  %ul.errors
+    - @num.errors.full_messages.each do |error|
+      %li= error
 - form_for(:num, :action => url(:action => "new")) do
 %table
   %tr

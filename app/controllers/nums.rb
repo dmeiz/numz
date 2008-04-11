@@ -9,8 +9,15 @@ class Nums < Application
 
     if request.post?
       @num.value = params[:num][:value]
-      @num.save
-      redirect "list"
+      @num.relevant_at = Chronic.parse(params[:relevant_at])
+      @num.link = params[:link]
+
+      if @num.save
+        flash[:notice] = "Num created"
+        return redirect("list")
+      else
+        return render
+      end
     else
       render
     end

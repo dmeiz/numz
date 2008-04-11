@@ -53,9 +53,14 @@ use_test :rspec
 dependency "merb_helpers"
 dependency "merb-haml"
 dependency "merb-assets"
+dependency "merb_has_flash"
+dependency "chronic"
 
 Merb::BootLoader.after_app_loads do
   ### Add dependencies here that must load after the application loads:
 
   # dependency "magic_admin" # this gem uses the app's model classes
+
+  # add chronic data handler to support calendar_date_select
+  Chronic.definitions[:date] << Chronic::Handler.new([:repeater_month_name, :scalar_day, :separator_comma?, :scalar_year], :handle_rmn_sd_sy)
 end
