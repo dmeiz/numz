@@ -13,11 +13,14 @@
   %tr
     %th Relevant At
     %td
-      = text_control(:relevant_at) 
+      = text_field(:name => "relevant_at", :value => date_to_s(@num.relevant_at)) 
       = image_tag("calendar_date_select/calendar.gif", :id => "relevant_at_cal")
   %tr
     %th Link
     %td= text_control(:link)
+  %tr
+    %th Tags
+    %td= text_field(:name => "tag_names", :value => @tag_names)
   %tr
     %td/
     %td= submit_field

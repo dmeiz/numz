@@ -10,4 +10,13 @@ class Num < DataMapper::Base
   #has_one :unit 
   #belongs_to :user
   has_and_belongs_to_many :tags
+
+  def tags_as_s()
+    s = ""
+    tags.each_with_index do |tag, i|
+      s << " " unless i == 0
+      s << tag.name
+    end
+    s
+  end
 end

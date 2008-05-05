@@ -4,8 +4,10 @@
     %th Value
     %th Relevant At
     %th Link
+    %th Tags
   - @nums.each do |num|
     %tr
       %td= num.value
-      %td= num.relevant_at
+      %td= date_to_s(num.relevant_at)
       %td= num.link
+      %td= num.tags_as_s
