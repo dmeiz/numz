@@ -6,11 +6,16 @@ class Nums < Application
 
   def new
     @tagnames = ""
+    @value =""
     @num = Num.new
 
     if request.post?
       @num.value = params[:num][:value]
-      @num.relevant_at = Chronic.parse(params[:relevant_at])
+
+      unless params[:relevant_at].blank?
+        @num.relevant_at = Chronic.parse(params[:relevant_at])
+        @num
+      end
       @num.link = params[:link]
 
       if @num.valid?
