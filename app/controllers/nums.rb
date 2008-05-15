@@ -6,11 +6,22 @@ class Nums < Application
 
   def new
     @tagnames = ""
-    @value =""
+    @value = ""
+    @unit = ""
+    @desc = ""
     @num = Num.new
 
     if request.post?
-      @num.value = params[:num][:value]
+      @tagnames = params[:tagnames]
+      @value = params[:value]
+      @unit = params[:unit]
+      @desc = params[:desc]
+
+      @num.value = @value
+
+      unless @num.unit = Unit.first(:name => @unit)
+        @num.unit = Unit.new(:name => @unit)
+      end
 
       unless params[:relevant_at].blank?
         @num.relevant_at = Chronic.parse(params[:relevant_at])

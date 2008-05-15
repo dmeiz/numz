@@ -1,0 +1,161 @@
+MODEL
+-----
+User
+  email
+  password
+
+  has_many :nums
+
+Num
+  value
+  unit
+  relevant_at
+  link
+
+  has_many :tags
+
+Tag
+  name
+
+STORIES
+-------
++- Complete?
+|
+  Login
+    As a user, I login.
+
+  Register
+    As a visitor, I register a new account.
+
+  Create Num
+    As a user, I add a num...
+      I specify zero or more tags.  Tags are alphanumeric strings, all lowercase.
+      Unit is an alpha string
+      The number is required, but all other atts are optional.
+      Existing tags are displayed as I type to give me a hint at what tag I might use.
+
+    GET  http://numz.org/num/new
+    POST http://numz.org/num/new
+    
+    UI...
+      Number:      [18000        ]
+      Unit:        [gal          ]
+      Description: [             ]
+      Date:        [1/1/2008     ] to [1/31/2008    ]
+      Tags:        [water utility          ]
+      Link:        [             ]
+
+                   *Save*
+
+  Get Nums
+    As a user, I get nums...
+      I request nums by tag.
+      The nums are displayed in a list, sorted by date.
+
+    POST http://numz.org/num/find/
+    
+    UI...
+      Tags: [water            ]
+
+            *Submit*
+
+      15,000 gal 11/1/2007
+      16,000 gal 12/1/2007
+      18,000 gal 1/1/2008
+
+  Update Num
+  Delete Num
+
+OLD LOG
+-------
+
+20080503
+Using git logs to record this nonsense.
+
+20080427
+Updated Tag to a has and belongs to many relationship with Num. 
+
+20080409
+Added Tag.  Use merb-gen to generate things.
+
+20080407
+Log with Merb.logger.debug("...").
+
+Got validation errors displaying.
+
+20080406
+Added a new handler to Chronic to handle the date issue.  I added it to
+config.init in the post-load block.
+
+Started troubleshooting validations.
+
+20080405
+Reworked controller to validate and report errors.  Installed merb_has_flash plugin.  Discovered bug in Chronic: it doesn't parse "January 15, 2008".
+
+20080404
+Upgraded to merb-0.9.2 to make use of merb-assets, including these methods:
+
+  css_include_tag "calendar_date_select/default"
+  js_include_tag "prototype"
+  include_required_js
+  require_js "new.js"
+
+Made some real progress integrating CalendarDateSelect.  Bailed on the port
+from Rails; decided to use straight Javascript.  
+
+Started validation of Num.
+
+20080320
+Added Prototype.  Started adding CalendarDateSelect:
+
+  http://code.google.com/p/calendardateselect/
+
+It's a Rails plugin, but I'm trying to integrate it.
+
+20080319
+Looked for a date/time picker and found this:
+
+  http://www.razum.si/jQuery-calendar/TimeCalendar.html
+
+Started reading a little about jQuery.
+
+20080318
+Looked into DataMapper refactor, but it's a little too green.  It doesn't
+support double yet.
+
+20080312
+Created Nums controller with new and list actions.  Need to store more precise floats.
+
+20080311
+Created Num and Unit models.
+
+20080310
+Install haml gem.  Added 'dependency merb-haml"' to init.rb to enable it.
+Tweaked application.html.haml to see if it worked.
+
+20080308
+Commited merbful_authentication.
+
+20080304
+Generated merbful_authentication.  Had to enable merb_helpers in
+config/init.rb.  Was able to get the form to diplay.
+
+20080303
+Installed merbful_authentication from git source.  Needed to checkout origin
+branch to get package tasks?  Git is nuts.  Enabled DataMapper and create User
+model.  Installed merb_rspec gem from merb-plugins src.  Found this recent post:
+
+  http://rorblog.techcfl.com/2008/02/20/merborial-up-and-running-with-merb-090-dev/
+
+20080302
+Started install of merbful_authentication from this post:
+
+  http://hassox.blogspot.com/2008/01/merbful-authentication-is-born.html
+
+Needed to first install merb-core from trunk:
+
+  http://blog.kineticweb.com/articles/2008/02/09/soar-with-merb-core-and-merb-more-0-9
+
+20080224
+Starting the project.
+

@@ -1,6 +1,5 @@
 - require_js("new.js")
 %h2 Add a Num
-- Merb.logger.debug("errors=#{@num.errors.full_messages.join}")
 - unless @num.errors.empty?
   %ul.errors
     - @num.errors.full_messages.each do |error|
@@ -8,13 +7,22 @@
 - form_for(:num, :action => url(:action => "new")) do
 %table
   %tr
-    %th Value
+    %th Number
     %td= text_field(:name => "value", :value => @value)
+  %tr
+    %th Unit
+    %td= text_field(:name => "unit", :value => @unit)
+  %tr
+    %th Description
+    %td= text_field(:name => "desc", :value => @desc)
   %tr
     %th Relevant At
     %td
       = text_field(:name => "relevant_at", :value => date_to_s(@num.relevant_at)) 
       = image_tag("calendar_date_select/calendar.gif", :id => "relevant_at_cal")
+      = " to "
+      = text_field(:name => "relevant_to", :value => date_to_s(@num.relevant_to)) 
+      = image_tag("calendar_date_select/calendar.gif", :id => "relevant_to_cal")
   %tr
     %th Link
     %td= text_control(:link)

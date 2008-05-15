@@ -2,6 +2,6 @@ require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
 describe Num do
 
-  it "should have specs"
+  it "sould have specs"
 
 end
